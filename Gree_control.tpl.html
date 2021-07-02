@@ -1,0 +1,197 @@
+﻿<style type="text/css">   @import url("/static/gree_msz.css"); </style>
+<div class="section">
+ <div class="controls">
+  <div class="bigDash">
+   <div class="kozepre" ng-init="knob = {
+        value: itemValue('AirconCurrentTemp'),
+          options: {
+              scale: {
+                  enabled: true,
+                  type: 'lines',
+                  color: 'gray',
+                  width: 2,
+                  spaceWidth: 10,
+                  quantity: 21,
+                  height: 8
+                      },
+              skin: {
+                  type: 'tron',
+                  width:  5,
+                  color: 'rgba(38, 191, 117, 1)',
+                  spaceWidth: 5
+                    },
+              readOnly: true,
+              max: 35,
+              min: 15,                      
+              trackWidth: 30,
+              fontsize: 'auto',
+              barWidth: 30,
+              step: 1,
+              startAngle: 20,
+              endAngle: 340,
+              trackColor: 'rgba(86, 95, 88, 1)',
+              barColor: 'rgba(38, 191, 117, 1)',
+              textColor: 'white',
+              subText: {
+                  enabled: true,
+                  text: 'Current',
+                  color: 'gray',
+                  font: 'auto'
+                    },
+          }
+        };">
+    
+      <div>
+       <ui-knob value="knob.value" options="knob.options"/>
+      </div>
+   </div>
+   <div class="kozepre" ng-init="knob2 = {
+        value: itemValue('AirconTargetTemp'),
+          options: {
+              scale: {
+                  enabled: true,
+                  type: 'lines',
+                  color: 'gray',
+                  width: 2,
+                  spaceWidth: 10,
+                  quantity: 21,
+                  height: 8
+                      },
+              skin: {
+                  type: 'tron',
+                  width:  5,
+                  color: 'rgba(38, 191, 117, 1)',
+                  spaceWidth: 5
+                      },
+              readOnly: false,
+              max: 35,
+              min: 15,                      
+              trackWidth: 30,
+              fontsize: 'auto',
+              barWidth: 30,
+              step: 1,
+              startAngle: 20,
+              endAngle: 340,
+              trackColor: 'rgba(86, 95, 88, 1)',
+              barColor: 'rgba(38, 191, 117, 1)',
+              textColor: 'white',
+              subText: {
+              enabled: true,
+              text: 'Target',
+              color: 'gray',
+              font: 'auto'
+                    },
+          }
+        };">
+
+      <div>
+       <ui-knob value="knob2.value" options="knob2.options" ng-click="sendCmd(AirconTargetTemp , knob2.value)"/>
+      </div>
+   </div>
+  </div>
+  
+  <div class="bigDash">
+   <div class="tarolo_box_parent"> 
+    <div class="sub-title2">Airconditioner:</div>
+    <div class="icononoff" ng-if="itemValue('AirconPower') =='OFF'"><div class="icon off"><svg viewBox="-50 -30 250 250" ng-click="sendCmd('AirconPower', 'ON')"><use xlink:href="/static/icon/gree_habpanel_icon.svg#onoff"></use></svg></div></div>
+    <div class="icononoff" ng-if="itemValue('AirconPower') !='OFF'"><div class="icon on"><svg viewBox="-50 -30 250 250" ng-click="sendCmd('AirconPower', 'OFF')"><use xlink:href="/static/icon/gree_habpanel_icon.svg#onoff"></use></svg></div></div>
+   </div> 
+   <div class="tarolo_box_parent">
+     <div class="selection">
+      <form name="myForm">
+       <select ng-init="data.simaKijelolo = data.simaKijelolo || itemValue('AirconMode')" name="simaKijelolo" id="simaKijelolo" ng-model="data.simaKijelolo" class="theme-selecttion">
+        <option value="auto" ng-click="sendCmd('AirconMode', 0)">Auto mode</option> <!-- interpolation -->
+        <option value="cool" ng-click="sendCmd('AirconMode', 1)">Cool mode</option>
+        <option value="dry" ng-click="sendCmd('AirconMode', 2)">Dry mode</option>
+        <option value="fan" ng-click="sendCmd('AirconMode', 3)">Fan mode</option>
+        <option value="heat" ng-click="sendCmd('AirconMode', 4)">Heat mode</option>
+       </select>
+      </form>
+     </div>
+     <div class="widgetposit">
+      <div ng-if="data.simaKijelolo =='auto'"><div class="icon on"><svg viewBox="0 0 125 125"><use xlink:href="/static/icon/gree_habpanel_icon.svg#automatic"></use></svg></div>   </div>
+      <div ng-if="data.simaKijelolo =='cool'"><div class="icon on"><svg viewBox="0 0 125 125"><use xlink:href="/static/icon/gree_habpanel_icon.svg#GreeCool"></use></svg></div>   </div> 
+      <div ng-if="data.simaKijelolo =='dry'"><div class="icon on"><svg viewBox="0 0 80 80"><use xlink:href="/static/icon/gree_habpanel_icon.svg#drops"></use></svg></div>   </div> 
+      <div ng-if="data.simaKijelolo =='fan'"><div class="icon on"><svg viewBox="0 0 120 120"><use xlink:href="/static/icon/gree_habpanel_icon.svg#GreeFan"></use></svg></div>   </div> 
+      <div ng-if="data.simaKijelolo =='heat'"><div class="icon on"><svg viewBox="0 0 130 130"><use xlink:href="/static/icon/gree_habpanel_icon.svg#GreeHeat"></use></svg></div>   </div>  
+     </div>
+    </div> 
+ 
+   <div class="vonallent"></div>
+   <div class="tarolo_box_parent">
+    <div class="widgetwidth tarolo_box_parent" ng-if="itemValue('AirconTurbo') =='OFF'"><div class="icononoff icon off"><svg viewBox="-10 0 120 120" ng-click="sendCmd('AirconTurbo', 'ON')"><use xlink:href="/static/icon/gree_habpanel_icon.svg#GreeFan"></use></svg></div>  </div>
+    <div class="widgetwidth tarolo_box_parent" ng-if="itemValue('AirconTurbo') !='OFF'"><div class="icononoff icon on"><svg viewBox="-10 0 120 120" ng-click="sendCmd('AirconTurbo', 'OFF')"><use xlink:href="/static/icon/gree_habpanel_icon.svg#GreeFan"></use></svg></div>  </div>
+    <div class="widgetwidth tarolo_box_parent" ng-if="itemValue('AirconAir') =='OFF'"><div class="icononoff icon off"><svg viewBox="0 5 50 50" ng-click="sendCmd('AirconAir', 'ON')"><use xlink:href="/static/icon/gree_habpanel_icon.svg#GreeAir"></use></svg></div>  </div>
+    <div class="widgetwidth tarolo_box_parent" ng-if="itemValue('AirconAir') !='OFF'"><div class="icononoff icon on"><svg viewBox="0 5 50 50" ng-click="sendCmd('AirconAir', 'OFF')"><use xlink:href="/static/icon/gree_habpanel_icon.svg#GreeAir"></use></svg></div>  </div>
+    <div class="widgetwidth tarolo_box_parent" ng-if="itemValue('AirconHealth') =='OFF'"><div class="icononoff icon off"><svg viewBox="0 0 130 130" ng-click="sendCmd('AirconHealth', 'ON')"><use xlink:href="/static/icon/gree_habpanel_icon.svg#GreeHealth"></use></svg></div>  </div>
+    <div class="widgetwidth tarolo_box_parent" ng-if="itemValue('AirconHealth') !='OFF'"><div class="icononoff icon on"><svg viewBox="0 0 130 130" ng-click="sendCmd('AirconHealth', 'OFF')"><use xlink:href="/static/icon/gree_habpanel_icon.svg#GreeHealth"></use></svg></div>  </div>
+    <div class="widgetwidth tarolo_box_parent" ng-if="itemValue('AirconPowerSaving') =='OFF'"><div class="icononoff icon off"><svg viewBox="0 0 110 110" ng-click="sendCmd('AirconPowerSaving', 'ON')"><use xlink:href="/static/icon/gree_habpanel_icon.svg#GreeEco"></use></svg></div>  </div>
+    <div class="widgetwidth tarolo_box_parent" ng-if="itemValue('AirconPowerSaving') !='OFF'"><div class="icononoff icon on"><svg viewBox="0 0 110 110" ng-click="sendCmd('AirconPowerSaving', 'OFF')"><use xlink:href="/static/icon/gree_habpanel_icon.svg#GreeEco"></use></svg></div>  </div>
+   </div>
+   <div class="tarolo_box_parent">
+    <div class="widgetwidth kozepre">Turbo</div>
+    <div class="widgetwidth kozepre">&nbsp;&nbsp;Air</div>
+    <div class="widgetwidth kozepre">Hygi</div>
+    <div class="widgetwidth kozepre">Save</div>
+   </div>
+   <div class="tarolo_box_parent">
+    <div class="nagyikon" ng-if="data.simaKijelolo =='auto'"><svg viewBox="0 0 125 125"><use xlink:href="/static/icon/gree_habpanel_icon.svg#automatic"></use></svg></div>
+    <div class="nagyikon" ng-if="data.simaKijelolo =='cool'"><svg viewBox="0 0 125 125"><use xlink:href="/static/icon/gree_habpanel_icon.svg#GreeCool"></use></svg></div> 
+    <div class="nagyikon" ng-if="data.simaKijelolo =='dry'"><svg viewBox="0 0 80 80"><use xlink:href="/static/icon/gree_habpanel_icon.svg#drops"></use></svg></div> 
+    <div class="nagyikon" ng-if="data.simaKijelolo =='fan'"><svg viewBox="0 0 120 120"><use xlink:href="/static/icon/gree_habpanel_icon.svg#GreeFan"></use></svg></div> 
+    <div class="nagyikon" ng-if="data.simaKijelolo =='heat'"><svg viewBox="-20 0 130 130"><use xlink:href="/static/icon/gree_habpanel_icon.svg#GreeHeat"></use></svg></div>  
+   </div>
+  </div>
+
+  <div class="bigDash">
+   <div class="description">Fan</div>
+   <div class="sliderposit">
+    <div class="kozepre">
+     <div ng-if="itemValue('AirconFanSpeed') ==0">Fan Speed: Automatic</div>
+     <div ng-if="itemValue('AirconFanSpeed') !=0">Fan Speed: {{itemValue('AirconFanSpeed')}}</div>
+    </div> 
+    <div ng-class="(ngModel.dontwrap) ? '' : 'slider-presets-wrap-adjust'" ng-init="sliderModel = { name: '', item: 'AirconFanSpeed', floor: 0, ceil: 5, step: 1, unit: ''  }">
+     <widget-slider ng-model="sliderModel"></widget-slider>
+    </div>  
+   <div class="description">Horizontal</div>
+   <div class="tarolo_box_parent">
+    <div class="icononoff">
+     <div class="icononoff" ng-if="itemValue('AirconSwingHorizontal') ==0"><div class="icon off"><svg viewBox="-50 0 250 250" ng-click="sendCmd('AirconSwingHorizontal', '1')"><use xlink:href="/static/icon/gree_habpanel_icon.svg#onoff"></use></svg></div>  </div>
+     <div class="icononoff" ng-if="itemValue('AirconSwingHorizontal') !=0"><div class="icon on"><svg viewBox="-50 0 250 250" ng-click="sendCmd('AirconSwingHorizontal', '0')"><use xlink:href="/static/icon/gree_habpanel_icon.svg#onoff"></use></svg></div>  </div>
+    </div>
+    <div class="form-group tarolo_item_child2 swingtable" ng-init="SwLR_type = SwLR_type || itemValue('AirconSwingHorizontal')" ng-model="SwLR_type">
+     <div class="balra" ng-class="{'bg-info': SwLR_type==2}" ng-click="SwLR_type=2; sendCmd('AirconSwingHorizontal', 2)"><div class="widget33"><svg viewBox="-5 0 100 100"><use xlink:href="/static/icon/gree_habpanel_icon.svg#LRswing02"></use></svg></div></div>
+     <div class="balra" ng-class="{'bg-info': SwLR_type==3}" ng-click="SwLR_type=3; sendCmd('AirconSwingHorizontal', 3)"><div class="widget33"><svg viewBox="-5 0 100 100"><use xlink:href="/static/icon/gree_habpanel_icon.svg#LRswing03"></use></svg></div></div>
+     <div class="balra" ng-class="{'bg-info': SwLR_type==4}" ng-click="SwLR_type=4; sendCmd('AirconSwingHorizontal', 4)"><div class="widget33"><svg viewBox="-5 0 100 100"><use xlink:href="/static/icon/gree_habpanel_icon.svg#LRswing04"></use></svg></div></div>
+     <div class="balra" ng-class="{'bg-info': SwLR_type==5}" ng-click="SwLR_type=5; sendCmd('AirconSwingHorizontal', 5)"><div class="widget33"><svg viewBox="-5 0 100 100"><use xlink:href="/static/icon/gree_habpanel_icon.svg#LRswing05"></use></svg></div></div>
+     <div class="balra" ng-class="{'bg-info': SwLR_type==6}" ng-click="SwLR_type=6; sendCmd('AirconSwingHorizontal', 6)"><div class="widget33"><svg viewBox="-5 0 100 100"><use xlink:href="/static/icon/gree_habpanel_icon.svg#LRswing06"></use></svg></div></div>
+     <div class="balra" ng-class="{'bg-info': SwLR_type==1}" ng-click="SwLR_type=1; sendCmd('AirconSwingHorizontal', 1)"><div class="widget33"><svg viewBox="-5 0 100 100"><use xlink:href="/static/icon/gree_habpanel_icon.svg#LRswing01"></use></svg></div></div>
+    </div>
+   </div>
+   <div class="description">Vertical</div>
+   <div class="tarolo_box_parent">
+    <div class="onoffposit">On / Off:</div>
+    <div class="icononoff" ng-if="itemValue('AirconSwingVertical') ==0"><div class="icon off"><svg viewBox="-50 -30 250 250" ng-click="sendCmd('AirconSwingVertical', 1)"><use xlink:href="/static/icon/gree_habpanel_icon.svg#onoff"></use></svg></div>  </div>
+    <div class="icononoff" ng-if="itemValue('AirconSwingVertical') !=0"><div class="icon on"><svg viewBox="-50 -30 250 250" ng-click="sendCmd('AirconSwingVertical', 0)"><use xlink:href="/static/icon/gree_habpanel_icon.svg#onoff"></use></svg></div>  </div>
+    <div class="onoffposit"> Full swing:</div>
+    <div class="icononoff" ng-if="itemValue('AirconSwingVertical') ==1"><div class="icon on"><svg viewBox="-20 5 90 90" ng-click="sendCmd('AirconSwingVertical', 4)"><use xlink:href="/static/icon/gree_habpanel_icon.svg#SwingUDfull"></use></svg></div>  </div>
+    <div class="icononoff" ng-if="itemValue('AirconSwingVertical') !=1"><div class="icon off"><svg viewBox="-20 5 90 90" ng-click="sendCmd('AirconSwingVertical', 1)"><use xlink:href="/static/icon/gree_habpanel_icon.svg#SwingUDfull"></use></svg></div>  </div>
+   </div>
+   <div class="tarolo_box_parent2">
+    <div class="form-group swingtable2" ng-init="Swup_type2 = Swup_type2 || itemValue('AirconSwingVertical')" ng-model="Swup_type2">
+     <div class="balra" ng-class="{'bg-info': Swup_type2==2}" ng-click="Swup_type2=2; sendCmd('AirconSwingVertical', 2)"><div class="widget33"><svg viewBox="-10 0 80 80"><use xlink:href="/static/icon/gree_habpanel_icon.svg#SwingUDfix2"></use></svg></div></div>
+     <div class="balra" ng-class="{'bg-info': Swup_type2==3}" ng-click="Swup_type2=3; sendCmd('AirconSwingVertical', 3)"><div class="widget33"><svg viewBox="-10 0 80 80"><use xlink:href="/static/icon/gree_habpanel_icon.svg#SwingUDfix3"></use></svg></div></div>
+     <div class="balra" ng-class="{'bg-info': Swup_type2==4}" ng-click="Swup_type2=4; sendCmd('AirconSwingVertical', 4)"><div class="widget33"><svg viewBox="-10 0 80 80"><use xlink:href="/static/icon/gree_habpanel_icon.svg#SwingUDfix4"></use></svg></div></div>
+     <div class="balra" ng-class="{'bg-info': Swup_type2==5}" ng-click="Swup_type2=5; sendCmd('AirconSwingVertical', 5)"><div class="widget33"><svg viewBox="-10 0 80 80"><use xlink:href="/static/icon/gree_habpanel_icon.svg#SwingUDfix5"></use></svg></div></div>
+     <div class="balra" ng-class="{'bg-info': Swup_type2==6}" ng-click="Swup_type2=6; sendCmd('AirconSwingVertical', 6)"><div class="widget33"><svg viewBox="-10 0 80 80"><use xlink:href="/static/icon/gree_habpanel_icon.svg#SwingUDfix6"></use></svg></div></div>
+     <div class="balra" ng-class="{'bg-info': Swup_type2==11}" ng-click="Swup_type2=11; sendCmd('AirconSwingVertical', 11)"><div class="widget33"><svg viewBox="-20 5 80 80"><use xlink:href="/static/icon/gree_habpanel_icon.svg#SwingUDS11"></use></svg></div></div>
+     <div class="balra" ng-class="{'bg-info': Swup_type2==10}" ng-click="Swup_type2=10; sendCmd('AirconSwingVertical', 10)"><div class="widget33"><svg viewBox="-20 5 80 80"><use xlink:href="/static/icon/gree_habpanel_icon.svg#SwingUDS10"></use></svg></div></div>
+     <div class="balra" ng-class="{'bg-info': Swup_type2==9}" ng-click="Swup_type2=9; sendCmd('AirconSwingVertical', 9)"><div class="widget33"><svg viewBox="-20 5 80 80"><use xlink:href="/static/icon/gree_habpanel_icon.svg#SwingUDS9"></use></svg></div></div>
+     <div class="balra" ng-class="{'bg-info': Swup_type2==8}" ng-click="Swup_type2=8; sendCmd('AirconSwingVertical', 8)"><div class="widget33"><svg viewBox="-20 5 80 80"><use xlink:href="/static/icon/gree_habpanel_icon.svg#SwingUDS8"></use></svg></div></div>
+     <div class="balra" ng-class="{'bg-info': Swup_type2==7}" ng-click="Swup_type2=7; sendCmd('AirconSwingVertical', 7)"><div class="widget33"><svg viewBox="-20 5 80 80"><use xlink:href="/static/icon/gree_habpanel_icon.svg#SwingUDS7"></use></svg></div></div>   
+    </div>
+   </div>
+  </div>
+
+ </div>
+</div>
