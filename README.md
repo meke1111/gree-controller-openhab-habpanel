@@ -19,7 +19,7 @@ In my setup:<br>
 1) Copy gree_habpanel_icon.svg file to <i>/static/icon/</i> folder.<br>
 2) Copy gree_msz.css file to <i>/static/</i> folder. <br>
 3) Add a new "Template widget" in your control panel (or create a new widget) at HABPanel.<br>
-4) Copy the control code to the field of the Teplate's edit (widget's code) window.<br>
+4) Copy the control code from <i>Gree_control.tpl.html</i> file to the field of the Teplate's edit (widget's code) window.<br>
  
 <h2>Function:</h2>
 - All Aircondition control commands are in the code, meaning there is no need to add new rules to <i>*.rules</i> file;<br>
