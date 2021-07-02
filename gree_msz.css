@@ -1,0 +1,132 @@
+@charset "UTF-8";
+:root {
+  --radius: 2px;
+  --baseFg: dimgray;
+  --baseBg: white;
+  --accentFg: #171c19;
+  --accentBg: #bae1ff;
+}
+.theme-selecttion {
+  --radius: 0;
+  --baseFg: #26bf75;
+  --baseBg: #171c19;
+  --accentFg: #171c19;
+  --accentBg: #26bf75;
+}
+select {
+  font: 400 12px/1.3 sans-serif;
+  -webkit-appearance: none;
+  appearance: none;
+  color: var(--baseFg);
+  border: 1px solid var(--baseFg);
+  line-height: 1;
+  outline: 0;
+  padding: 0.65em 2.5em 0.55em 0.75em;
+  border-radius: var(--radius);
+  background-color: var(--baseBg);
+  background-image: linear-gradient(var(--baseFg), var(--baseFg)),
+    linear-gradient(-135deg, transparent 50%, var(--accentBg) 50%),
+    linear-gradient(-225deg, transparent 50%, var(--accentBg) 50%),
+    linear-gradient(var(--accentBg) 42%, var(--accentFg) 42%);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: 1px 100%, 20px 22px, 20px 22px, 20px 100%;
+  background-position: right 20px center, right bottom, right bottom, right bottom;   
+}
+select:hover {
+  background-image: linear-gradient(var(--accentFg), var(--accentFg)),
+    linear-gradient(-135deg, transparent 50%, var(--accentFg) 50%),
+    linear-gradient(-225deg, transparent 50%, var(--accentFg) 50%),
+    linear-gradient(var(--accentFg) 42%, var(--accentBg) 42%);
+}
+select:active {
+  background-image: linear-gradient(var(--accentFg), var(--accentFg)),
+    linear-gradient(-135deg, transparent 50%, var(--accentFg) 50%),
+    linear-gradient(-225deg, transparent 50%, var(--accentFg) 50%),
+    linear-gradient(var(--accentFg) 42%, var(--accentBg) 42%);
+  color: var(--accentBg);
+  border-color: var(--accentFg);
+  background-color: var(--accentFg);
+}
+.bg-info {
+  background-color: #19201c;
+  stroke: #26bf75;
+  fill: #26bf75;
+}
+.tarolo_box_parent {
+  display:  flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;  
+  flex-wrap:       nowrap;
+  justify-content: center;
+  margin-top: 5px;
+}
+.tarolo_box_parent2 {
+  display:  flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;  
+  flex-wrap:       wrap;
+  justify-content: center;
+  margin-top: 5px;
+}
+.tarolo_item_child2 {
+   width: 230px;
+  }
+.icononoff {
+  width: 40px;
+}
+.vonallent {
+   border-bottom: 1px solid #26bf75;   
+   width: 90%;
+   margin-left: 5%;
+   margin-top: 5px;
+}
+.balra {
+  float:left;
+}
+.widgetposit {
+  margin-left: 5pt;
+  width: 20pt;
+}
+.widget33 {
+  width: 33px;
+  height: 33px;
+}
+.widgetwidth {
+  width: 15%;
+}
+.swingtable {
+  fill: #565f58;
+  stroke: #565f58;
+}
+.swingtable2 {
+  fill: #565f58;
+  stroke: #565f58;
+  width: 166px;
+}
+.sliderposit {
+  float: none;
+  margin-left: 10%;
+  width: 80%;
+}
+.nagyikon {
+  text-align: center;
+  width: 50%;
+  fill: #26bf75;
+  stroke: #26bf75;
+}
+.onoffposit {
+  float: left;
+  top: 50%;
+  -ms-transform: translateY(15%);
+  transform: translateY(15%);
+}
+.slider-presets-wrap-adjust {
+    margin: -10px -10px 0px -10px;
+}
+.kozepre {
+  text-align:center;
+}  
