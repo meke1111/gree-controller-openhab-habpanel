@@ -1,7 +1,7 @@
 # Gree controller openhab-habpanel
 
 <h2>Prerequisites</h2>
-- installed Openhab (3.0 is prefered) <br>
+- installed Openhab (3.1 is prefered) <br>
 - installed <a title="openhab-habpanel-theme-matrix" href="https://github.com/pmpkk/openhab-habpanel-theme-matrix">openhab-habpanel-theme-matrix</a><br>
 - installed Gree binding <br>
 - items, things, map like the Gree Binding document are used<br>
