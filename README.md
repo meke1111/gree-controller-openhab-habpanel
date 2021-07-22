@@ -1,3 +1,4 @@
+![Gree_Markus_openhab](https://user-images.githubusercontent.com/37710791/126590044-a13def6e-1a05-4cc8-b073-95a6de45e5c5.jpg)
 # Gree controller openhab-habpanel
 
 <h2>Prerequisites</h2>
